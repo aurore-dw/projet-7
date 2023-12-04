@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Phone;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @extends ServiceEntityRepository<Phone>
@@ -19,6 +20,19 @@ class PhoneRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Phone::class);
+    }
+
+    // Réccupère la liste des utilisateurs avec la pagination
+    public function paginate($page = 1, $limit = 5)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery();
+
+        $paginator = new Paginator($query, $fetchJoinCollection = true);
+
+        return $paginator;
     }
 
 //    /**
