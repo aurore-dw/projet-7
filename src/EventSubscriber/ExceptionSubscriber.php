@@ -23,14 +23,14 @@ class ExceptionSubscriber implements EventSubscriberInterface
             //Erreur 403 - Forbidden
             $data = [
                 'status' => $exception->getStatusCode(),
-                //'message' => 'Accès refusé : ' . $exception->getMessage()
+                'message' => 'Accès refusé : ' . $exception->getMessage()
             ];
             $event->setResponse(new JsonResponse($data));
         } elseif ($exception instanceof UnauthorizedHttpException) {
             //Erreur 401 - Non authorisé
             $data = [
                 'status' => $exception->getStatusCode(),
-                //'message' => 'Authentification requise : ' . $exception->getMessage()
+                'message' => 'Authentification requise : ' . $exception->getMessage()
             ];
             $event->setResponse(new JsonResponse($data));
         } elseif ($exception instanceof NotFoundHttpException) {
@@ -38,14 +38,14 @@ class ExceptionSubscriber implements EventSubscriberInterface
             $url = $event->getRequest()->getRequestUri();
             $data = [
                 'status' =>  $exception->getStatusCode(),
-                //'message' => "Ressource introuvable : $url"
+                'message' => "Ressource introuvable : $url"
             ];
             $event->setResponse(new JsonResponse($data));
         } elseif ($exception instanceof BadRequestHttpException) {
             // Erreur 400 - Requête incorrecte
             $data = [
                 'status' => $exception->getStatusCode(),
-                //'message' => 'Requête incorrecte : ' . $exception->getMessage()
+                'message' => 'Requête incorrecte : ' . $exception->getMessage()
             ];
         } else {
             //Autres erreurs
