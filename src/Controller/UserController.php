@@ -41,7 +41,6 @@ class UserController extends AbstractController
 
         // Essaye de réccupérer les données mises en cache
         $cachedData = $cache->get($cacheKey, function ($item) use ($client, $userRepository, $serializer, $page, $limit) {
-            echo("L'élément n'est pas encore en cache");
             // Si les données ne sont pas dans le cache, on effectue la requête pour la mettre en cache
             $userList = $userRepository->paginate($client, $page, $limit);
 
