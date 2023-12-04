@@ -26,4 +26,4 @@
    
 - `symfony server:start`
 
-7. Accéder à l'application, généralement `http://localhost:8000`. L'idéal est d'y accéder via Postman pour faciliter les tests.
+7. Accéder à l'application, généralement `http://localhost:8000`.
