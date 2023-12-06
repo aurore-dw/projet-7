@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ExceptionSubscriber implements EventSubscriberInterface
 {
-
+    // Fonction qui gère les erreurs
     public function onKernelException(ExceptionEvent $event): void
     {
         $exception = $event->getThrowable();
