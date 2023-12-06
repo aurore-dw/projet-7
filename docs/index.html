@@ -16,7 +16,7 @@
 
 	<div class="row">
 
-		<h2>Table des matières</h2>
+		<h2>Table des matières</h2><br>
 
 		<ul>
 			<li><a href="#section-1">1. Introduction</a></li>
@@ -79,6 +79,7 @@
 			<ul>
 				<li>Examinez le corps de réponse pour voir la liste des produits</li>
 				<li><pre>
+				[
 					{
 						"id": 81,
 						"name": "Lenovo Legion Phone Duel 2",
@@ -114,9 +115,10 @@
 						"description": "Description 4",
 						"price": "Prix : 588 €"
 					}
+				]
 				</pre></li>
 				<li>Les résultats sont paginés, afin de limitter la quantité des données. Ils sont alors divisés en plusieurs pages. Il est possible d'ajouter des paramètres à la requête pour ajuster la quantité de téléphones à générer</li>
-				<li>GET http://localhost:8000/api/clients/5/users?page=2&limit=5
+				<li>GET http://localhost:8000/api/clients/{clientId}/phones?page=2&limit=5
 					<p>Ces paramètres permettent d'afficher les 5 prochains téléphones mobiles, dans la seconde page.</p>
 				</li>
 			</ul>
@@ -125,7 +127,146 @@
 		<!-- Section 4: Détails d’un produit BileMo -->
 		<section id="section-4">
 			<h2>4. Détails d’un produit BileMo</h2>
-			<p>Contenu de la section Détails d’un produit BileMo...</p>
+			<p>1) Consultez le détail d'un téléphone mobile :</p>
+			<ul>
+				<li>Utilisez Postman pour envoyer une requête GET à l'URL du détail d'un produit, en ajoutant l'id souhaité.</li>
+				<li>GET http://localhost:8000/api/phones/{userId}</li>
+			</ul>
+			<p>2) Vérifiez la réponse de l’API pour la liste des produits :</p>
+			<ul>
+				<li>Examinez le corps de réponse pour voir la liste des produits</li>
+				<li><pre>
+					{
+    					"id": 87,
+    					"name": "iPhone 13 Pro",
+    					"description": "Description 6",
+    					"price": "Prix : 945 €"
+					}
+				</pre></li>
+			</ul>
+		</section>
+
+		<!-- Section 5: Liste des utilisateurs inscrits -->
+		<section id="section-5">
+    		<h2>5. Liste des utilisateurs inscrits</h2>
+    		<p>1) Consultez la liste des utilisateurs inscrits, pour chaque client :</p>
+			<ul>
+				<li>Utilisez Postman pour envoyer une requête GET à l'URL de la liste des utilisateurs inscris.</li>
+				<li>GET http://localhost:8000/api/clients/{clientId}/users</li>
+			</ul>
+			<p>2) Vérifiez la réponse de l’API pour la liste des utilisateurs :</p>
+			<ul>
+				<li>Examinez le corps de réponse pour voir la liste des utilisateurs</li>
+				<li><pre>
+				[
+					{
+						"id": 68,
+						"username": "user1Orange",
+						"email": "user1Orange@test.com",
+						"userDetailsUrl": "/api/clients/9/users/68",
+						"client": {
+							"id": 9,
+							"name": "Orange"
+						}
+					},
+					{
+						"id": 69,
+						"username": "user2Orange",
+						"email": "user2Orange@test.com",
+						"userDetailsUrl": "/api/clients/9/users/69",
+						"client": {
+							"id": 9,
+							"name": "Orange"
+						}
+					},
+					{
+						"id": 70,
+						"username": "user3Orange",
+						"email": "user3Orange@test.com",
+						"userDetailsUrl": "/api/clients/9/users/70",
+						"client": {
+							"id": 9,
+							"name": "Orange"
+						}
+					}
+				]
+				</pre></li>
+				<li>Les résultats sont paginés, afin de limitter la quantité des données. Ils sont alors divisés en plusieurs pages. Il est possible d'ajouter des paramètres à la requête pour ajuster la quantité d'utilisateurs à générer</li>
+				<li>GET http://localhost:8000/api/clients/{clientId}/users?page=2&limit=5
+					<p>Ces paramètres permettent d'afficher les 5 prochains utilisateurs, dans la seconde page.</p>
+				</li>
+		</section>
+
+		<!-- Section 6: Détails d’un utilisateur inscrit -->
+		<section id="section-6">
+    		<h2>6. Détails d’un utilisateur inscrit</h2>
+    		<p>1) Consultez le détail d'un utilisateur inscrit :</p>
+			<ul>
+				<li>Utilisez Postman pour envoyer une requête GET à l'URL du détail d'un utilisateur, en ajoutant l'id souhaité.</li>
+				<li>GET http://localhost:8000/api/users/{userId}</li>
+			</ul>
+			<p>2) Vérifiez la réponse de l’API pour le détail d'un utilisateur :</p>
+			<ul>
+				<li>Examinez le corps de réponse pour voir le détail de l'utilisateur.</li>
+				<li><pre>
+					{
+						"id": 70,
+						"username": "user3Orange",
+						"email": "user3Orange@test.com",
+						"password": "$2y$10$ohXRGmDihR/CVSfz0TlH9uboGKGLLeQV.SWfTc/BqHkoR.rGsXSwm",
+						"client": {
+							"id": 9,
+							"name": "Orange"
+						},
+						"roles": [
+						"ROLE_USER"
+						]
+					}
+				</pre></li>
+			</ul>
+		</section>
+
+		<!-- Section 7: Ajout d’un nouvel utilisateur -->
+		<section id="section-7">
+    		<h2>7. Ajout d’un nouvel utilisateur</h2>
+    		<p>1) Ajouter un nouvel utilisateur :</p>
+			<ul>
+				<li>Utilisez Postman pour envoyer une requête POST à l'URL d'ajout d'utilisateur.</li>
+				<li>POST http://localhost:8000/api/clients/{clientId}/users</li>
+				<li>Renseignez les informations requises</li>
+				<li><pre>
+					{
+						"username": "test",
+						"email": "test@test.com",
+						"password": "1234"
+					}
+				</pre></li>
+			</ul>
+			<p>2) Vérifiez la réponse de l’API pour la création d'un utilisateur :</p>
+			<ul>
+				<li>Examinez le corps de réponse pour voir si la création de l'utilisateur s'est bien déroulé.</li>
+				<li><pre>
+					{
+						"status": 201,
+						"message": "L'utilisateur a bien été ajouté"
+					}
+				</pre></li>
+			</ul>
+		</section>
+
+		<!-- Section 8: Suppression d’un utilisateur -->
+		<section id="section-8">
+    		<h2>8. Suppression d’un utilisateur</h2>
+    		<p>1) Supprimer un utilisateur :</p>
+			<ul>
+				<li>Utilisez Postman pour envoyer une requête DEL à l'URL de suppression d'utilisateur.</li>
+				<li>DEL http://localhost:8000/api/clients/{clientId}/users/{userId}</li>
+			</ul>
+			<p>2) Vérifiez la réponse de l’API pour la suppression d'un utilisateur :</p>
+			<ul>
+				<li>Examinez le corps de réponse pour voir si la suppression de l'utilisateur s'est bien déroulé.</li>
+				<li>Status : 204 No Content</li>
+			</ul>
 		</section>
 
 		</div>
