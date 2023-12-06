@@ -23,7 +23,7 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    // Réccupère la liste des utilisateurs avec la pagination
+    // Récupère la liste des utilisateurs avec la pagination
     public function paginate(Client $client, $page = 1, $limit = 3)
     {
         $query = $this->createQueryBuilder('u')

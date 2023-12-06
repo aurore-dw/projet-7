@@ -22,7 +22,7 @@ class PhoneRepository extends ServiceEntityRepository
         parent::__construct($registry, Phone::class);
     }
 
-    // Réccupère la liste des utilisateurs avec la pagination
+    // Récupère la liste des téléphones avec la pagination
     public function paginate($page = 1, $limit = 5)
     {
         $query = $this->createQueryBuilder('p')

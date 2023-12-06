@@ -17,6 +17,7 @@ use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
 class PhoneController extends AbstractController
 {
+    //Récupère la liste des téléphones
     #[Route('api/phones', name: 'phone', methods: ['GET'])]
     public function getPhoneList(PhoneRepository $phoneRepository, SerializerInterface $serializer, Request $request, TagAwareCacheInterface $cache): JsonResponse
     {
@@ -58,6 +59,7 @@ class PhoneController extends AbstractController
         return new JsonResponse($jsonPhoneList, Response::HTTP_OK, [], true);
     }
 
+    // Récuppère le détail d'un téléphone
     #[Route('/api/phones/{id}', name: 'detailPhone', methods: ['GET'])]
     public function getDetailPhone(Phone $phone, SerializerInterface $serializer): JsonResponse 
     {
