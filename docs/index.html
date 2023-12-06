@@ -14,14 +14,14 @@
 	<h2>Table des matières</h2>
 
 	<ul>
-    	<li><a href="#section-1">Introduction</a></li>
-    	<li><a href="#section-2">Accès à l’API</a></li>
-    	<li><a href="#section-3">Liste des produits BileMo</a></li>
-    	<li><a href="#section-4">Détails d’un produit BileMo</a></li>
-    	<li><a href="#section-5">Liste des utilisateurs inscrits</a></li>
-    	<li><a href="#section-6">Détails d’un utilisateur inscrit</a></li>
-    	<li><a href="#section-7">Ajout d’un nouvel utilisateur</a></li>
-    	<li><a href="#section-8">Suppression d’un utilisateur</a></li>
+    	<li><a href="#section-1">1. Introduction</a></li>
+    	<li><a href="#section-2">2. Accès à l’API</a></li>
+    	<li><a href="#section-3">3. Liste des produits BileMo</a></li>
+    	<li><a href="#section-4">4. Détails d’un produit BileMo</a></li>
+    	<li><a href="#section-5">5. Liste des utilisateurs inscrits</a></li>
+    	<li><a href="#section-6">6. Détails d’un utilisateur inscrit</a></li>
+    	<li><a href="#section-7">7. Ajout d’un nouvel utilisateur</a></li>
+    	<li><a href="#section-8">8. Suppression d’un utilisateur</a></li>
 	</ul>
 
 	<!-- Section 1: Introduction -->
@@ -35,8 +35,8 @@
     	<h2>2. Accès à l’API</h2>
     	<p>1) Obtenez un token JWT de BileMo en fournissant vos informations d’identifications. </p>
     	<ul>
-    		<li>• Utilisez Postman pour envoyer une requête POST à l’URL d’authentification JWT. Dans le body (en raw et JSON), renseignez le champ « username » ainsi que « password ».</li>
-    		<li>• POST http://localhost:8000/api/login_check</li>
+    		<li>Utilisez Postman pour envoyer une requête POST à l’URL d’authentification JWT. Dans le body (en raw et JSON), renseignez le champ « username » ainsi que « password ».</li>
+    		<li>POST http://localhost:8000/api/login_check</li>
     		<li><pre>
 					{
     					"username": "admin@test.com",
@@ -54,8 +54,8 @@
 		<p>2) Utilisez le token JWT dans l’en-tête d’autorisation pour toutes les requêtes à l’API. Le token a une durée de vie limitée, il peut être utilisé sur autant de requêtes que vous souhaitez dans la limite de sa durée. Une fois expiré, il faudra recréer un nouveau jeton.</p>
 
 		<ul>
-			<li>• Utilisez Postman pour envoyer des requêtes à l'API en incluant le jeton JWT dans l'en-tête d'autorisation («Headers»).</li>
-			<li>• Il est aussi possible de mettre le token JWT directement dans la section autorisation « Authorization », puis sélectionnez le type « Bearer Token » et entrez le token dans le champ dédié.</li>
+			<li>Utilisez Postman pour envoyer des requêtes à l'API en incluant le jeton JWT dans l'en-tête d'autorisation («Headers»).</li>
+			<li>Il est aussi possible de mettre le token JWT directement dans la section autorisation « Authorization », puis sélectionnez le type « Bearer Token » et entrez le token dans le champ dédié.</li>
 		</ul>
 		<p>3) Un compte administrateur aura plus d'autorisations qu'un compte utilisateur classique. Il pourra créer de nouveaux utilisateurs et en supprimer, tandis que l'utilisateur est seulement authoriser à consulter les données de l'API</p>
 	</section>
@@ -65,12 +65,12 @@
     	<h2>3. Liste des produits BileMo</h2>
     	<p>1) Consultez la liste des téléphones mobiles :</p>
     	<ul>
-			<li>• Utilisez Postman pour envoyer une requête GET à l'URL de la liste des produits.</li>
-			<li>• GET http://localhost:8000/api/phones</li>
+			<li>Utilisez Postman pour envoyer une requête GET à l'URL de la liste des produits.</li>
+			<li>GET http://localhost:8000/api/phones</li>
 		</ul>
 		<p>2) Vérifiez la réponse de l’API pour la liste des produits :</p>
 		<ul>
-			<li>• Examinez le corps de réponse pour voir la liste des produits</li>
+			<li>Examinez le corps de réponse pour voir la liste des produits</li>
 			<li><pre>
 				{
 					"id": 81,
@@ -108,8 +108,8 @@
 					"price": "Prix : 588 €"
 				}
 			</pre></li>
-			<li>• Les résultats sont paginés, afin de limitter la quantité des données. Ils sont alors divisés en plusieurs pages. Il est possible d'ajouter des paramètres à la requête pour ajuster la quantité de téléphones à générer</li>
-			<li>• GET http://localhost:8000/api/clients/5/users?page=2&limit=5
+			<li>Les résultats sont paginés, afin de limitter la quantité des données. Ils sont alors divisés en plusieurs pages. Il est possible d'ajouter des paramètres à la requête pour ajuster la quantité de téléphones à générer</li>
+			<li>GET http://localhost:8000/api/clients/5/users?page=2&limit=5
 				<p>Ces paramètres permettent d'afficher les 5 prochains téléphones mobiles, dans la seconde page.</p>
 			</li>
 		</ul>
