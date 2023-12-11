@@ -1,5 +1,7 @@
 # Projet 7 Formation Développeur d'application - PHP/Symfony Openclassrooms
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5bd9920ad6f549c88ea16a5781d17f0f)](https://app.codacy.com/gh/aurore-dw/projet-7/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ## Guide d'installation :
 
 1. Clonez ou télécharger le repository GitHub
